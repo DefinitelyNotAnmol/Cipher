@@ -6,7 +6,7 @@
 #include <ctime>
 #include <cctype>
 
-#include "../Log/log"
+#include "../Logger/logger"
 
 std::map<char, char> characterMap;
 
