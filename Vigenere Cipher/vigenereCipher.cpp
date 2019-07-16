@@ -2,7 +2,6 @@
 #include <map>
 #include <string>
 #include <algorithm>
-#include <math.h>
 
 std::map<char, int> vigenereTable;
 void start();
@@ -47,7 +46,10 @@ std::string decrypt(std::string cipherText, std::string key) {
     std::string plainText = cipherText;
 
     for (int i = 0; i < size; i++) {
-        int plain = abs((vigenereTable[cipherText[i]] - vigenereTable[key[i%keySize]]) % 26);
+        int plain = (vigenereTable[cipherText[i]] - vigenereTable[key[i%keySize]]) % 26;
+        if (plain < 0) {
+            plain = 26 + plain;
+        }
         plainText[i] = plain + 'A';
     }
 
